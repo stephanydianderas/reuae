@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B0F14" />
+  <title>Stephany Dianderas — UAE Real Estate | YouTube Channel</title>
+  <meta name="description" content="Everything you need to know about investing in property in Dubai, Abu Dhabi and the UAE. Weekly videos for international investors and local buyers." />
+  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <style>
+    /* Instagram section */
+    .instagram { padding-block: var(--sp-12); border-top: 1px solid var(--border); }
+    .instagram-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-5);
+      margin-top: var(--sp-8);
+    }
+    .ig-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: border-color var(--dur), transform var(--dur) var(--ease-out);
+    }
+    .ig-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-4px);
+    }
+    .ig-thumb {
+      aspect-ratio: 1/1;
+      background: var(--ink-3);
+      overflow: hidden;
+      position: relative;
+    }
+    .ig-thumb img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s var(--ease-out);
+    }
+    .ig-card:hover .ig-thumb img { transform: scale(1.05); }
+    .ig-thumb-placeholder {
+      width: 100%; height: 100%;
+      display: grid; place-items: center;
+      background: var(--surface);
+      color: var(--copper);
+      font-size: 2rem;
+    }
+    .ig-body { padding: var(--sp-4) var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-3); }
+    .ig-body p { font-size: var(--text-sm); color: var(--text-2); line-height: 1.65; }
+    .ig-link {
+      display: inline-flex; align-items: center; gap: var(--sp-2);
+      font-size: var(--text-xs); font-family: var(--font-mono);
+      text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--copper); transition: color var(--dur);
+    }
+    .ig-link:hover { color: var(--bone); }
+    .ig-cta { text-align: center; margin-top: var(--sp-8); }
+    @media (max-width: 900px) { .instagram-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 500px) { .instagram-grid { grid-template-columns: 1fr; } }
+
+    /* Videos section */
+    .videos-yt { padding-block: var(--sp-12); border-top: 1px solid var(--border); }
+    .videos-yt-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-5);
+      margin-top: var(--sp-8);
+    }
+    .yt-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: border-color var(--dur), transform var(--dur) var(--ease-out), box-shadow var(--dur);
+    }
+    .yt-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg), var(--shadow-copper);
+    }
+    .yt-thumb {
+      aspect-ratio: 16/9;
+      background: var(--ink-3);
+      position: relative; overflow: hidden;
+    }
+    .yt-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease-out); }
+    .yt-card:hover .yt-thumb img { transform: scale(1.05); }
+    .yt-play {
+      position: absolute; inset: 0;
+      display: grid; place-items: center;
+      background: rgba(11,15,20,0.45);
+      color: var(--copper-soft); font-size: 1.8rem;
+      opacity: 0; transition: opacity var(--dur);
+      backdrop-filter: blur(2px);
+    }
+    .yt-card:hover .yt-play { opacity: 1; }
+    .yt-thumb-placeholder {
+      width: 100%; height: 100%;
+      display: grid; place-items: center;
+      background: var(--surface);
+      color: var(--copper); font-size: 2.5rem;
+    }
+    .yt-body { padding: var(--sp-4) var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-2); }
+    .yt-body h3 { font-family: var(--font-display); font-size: var(--text-base); font-weight: 600; line-height: 1.35; }
+    .yt-body h3 a { color: var(--text); transition: color var(--dur); }
+    .yt-body h3 a:hover { color: var(--copper-soft); }
+    .yt-body p { font-size: var(--text-sm); color: var(--text-3); line-height: 1.6; }
+    .yt-cta { text-align: center; margin-top: var(--sp-8); }
+    @media (max-width: 900px) { .videos-yt-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 500px) { .videos-yt-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner container">
+      <a href="#inicio" class="nav-logo" aria-label="Home">
+        <span class="logo-emblem" aria-hidden="true">◈</span>
+        <div class="logo-text-group">
+          <span class="logo-name">Stephany Dianderas</span>
+          <span class="logo-sub">Real Estate · UAE</span>
+        </div>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#videos-yt">Videos</a></li>
+        <li><a href="#mercado">The market</a></li>
+        <li><a href="#sobre-mi">About me</a></li>
+        <li><a href="#contacto">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="https://wa.me/971586990835" target="_blank" rel="noopener" class="btn btn-ghost-sm" aria-label="WhatsApp">
+          <span class="whatsapp-icon" aria-hidden="true">◎</span> WhatsApp
+        </a>
+        <a href="https://www.youtube.com/@stephanydianderas9001" target="_blank" rel="noopener" class="btn btn-copper">
+          Subscribe
+        </a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul role="list">
+      <li><a href="#videos-yt">Videos</a></li>
+      <li><a href="#mercado">The market</a></li>
+      <li><a href="#sobre-mi">About me</a></li>
+      <li><a href="#contacto">Contact</a></li>
+    </ul>
+    <div class="mobile-menu-actions">
+      <a href="https://wa.me/971586990835" target="_blank" rel="noopener" class="btn btn-ghost-sm">◎ WhatsApp</a>
+      <a href="https://www.youtube.com/@stephanydianderas9001" target="_blank" rel="noopener" class="btn btn-copper">Subscribe to the channel</a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio" aria-label="Home">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-skyline"></div>
+        <div class="hero-gradient-overlay"></div>
+        <div class="hero-grid"></div>
+      </div>
+      <div class="container hero-content">
+        <div class="hero-kicker reveal">
+          <span class="kicker-line" aria-hidden="true"></span>
+          <span>Real Estate Advisor · Dubai, UAE</span>
+        </div>
+        <h1 class="hero-title reveal">
+          Invest in the UAE<br />
+          with <em>judgement</em>,<br />
+          not luck
+        </h1>
+        <p class="hero-lead reveal">
+          Market analysis, area comparisons, real returns and everything property portals don’t tell you. For international investors and buyers in the UAE who want to decide with first-hand information.
+        </p>
+        <div class="hero-cta-group reveal">
+          <a href="https://www.youtube.com/@stephanydianderas9001" target="_blank" rel="noopener" class="btn btn-hero">
+            ▶ Watch the channel
+          </a>
+          <a href="https://wa.me/971586990835" target="_blank" rel="noopener" class="btn btn-hero-outline">
+            ◎ Direct consultation
+          </a>
+        </div>
+        <div class="hero-stats reveal" role="list">
+          <div class="hstat" role="listitem">
+            <span class="hstat-num" >4+</span>
+            <span class="hstat-label">Years in real estate</span>
+          </div>
+          <div class="hstat-sep" aria-hidden="true">◈</div>
+          <div class="hstat" role="listitem">
+            <span class="hstat-num" data-count="5">0</span>
+            <span class="hstat-label">Emirates covered</span>
+          </div>
+          <div class="hstat-sep" aria-hidden="true">◈</div>
+          <div class="hstat" role="listitem">
+            <span class="hstat-num" data-count="3">0</span>
+            <span class="hstat-label">Languages</span>
+          </div>
+          <div class="hstat-sep" aria-hidden="true">◈</div>
+          <div class="hstat" role="listitem">
+            <span class="hstat-num" data-count="100">0</span>
+            <span class="hstat-label">% free</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- VIDEOS YOUTUBE -->
+    <section class="videos-yt" id="videos-yt" aria-label="YouTube videos">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">▸ YouTube channel</div>
+          <h2 class="section-title">Content that drives<br /><em>real decisions</em></h2>
+        </div>
+        <div class="videos-yt-grid">
+
+          <article class="yt-card reveal">
+            <a href="https://www.instagram.com/reel/DOhKVcXE5Ia/" target="_blank" rel="noopener" aria-label="Watch the introduction">
+              <div class="yt-thumb">
+                <div class="yt-thumb-placeholder" aria-hidden="true">▶</div>
+                <div class="yt-play" aria-hidden="true">▶</div>
+              </div>
+            </a>
+            <div class="yt-body">
+              <span class="pill pill-sm">Introduction</span>
+              <h3><a href="https://www.instagram.com/reel/DOhKVcXE5Ia/" target="_blank" rel="noopener">I’m a Real Estate Advisor in Dubai</a></h3>
+              <p>I work with UAE developers and design analysis-based investment strategies.</p>
+            </div>
+          </article>
+
+          <article class="yt-card reveal">
+            <div class="yt-thumb">
+              <div class="yt-thumb-placeholder" aria-hidden="true">▶</div>
+            </div>
+            <div class="yt-body">
+              <span class="pill pill-sm">Coming soon</span>
+              <h3><a href="https://www.youtube.com/@stephanydianderas9001" target="_blank" rel="noopener">Is it worth investing in Dubai in 2025?</a></h3>
+              <p>Real ROI by area, taxes nobody mentions and the most common mistakes of investors without advice.</p>
+            </div>
+          </article>
+
+          <article class="yt-card reveal">
+            <div class="yt-thumb">
+              <div class="yt-thumb-placeholder" aria-hidden="true">▶</div>
+            </div>
+            <div class="yt-body">
+              <span class="pill pill-sm">Coming soon</span>
+              <h3><a href="https://www.youtube.com/@stephanydianderas9001" target="_blank" rel="noopener">Off-plan vs secondary market in the UAE</a></h3>
+              <p>When to buy off-plan and when not to. Honest analysis with real market data.</p>
+            </div>
+          </article>
+
+        </div>
+        <div class="yt-cta reveal">
+          <a href="https://www.youtube.com/@stephanydianderas9001" target="_blank" rel="noopener" class="btn btn-outline-copper">
+            Subscribe to the channel →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTAGRAM -->
+    <section class="instagram" id="instagram" aria-label="Instagram">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">▸ Instagram</div>
+          <h2 class="section-title">The UAE market,<br /><em>day by day</em></h2>
+        </div>
+        <div class="instagram-grid">
+
+          <div class="ig-card reveal">
+            <a href="https://www.instagram.com/p/DTbA9PvEzFd/" target="_blank" rel="noopener" aria-label="View post on Instagram">
+              <div class="ig-thumb">
+                <div class="ig-thumb-placeholder" aria-hidden="true">◈</div>
+              </div>
+            </a>
+            <div class="ig-body">
+              <span class="pill pill-sm">Market · Dubai</span>
+              <p>Dubai welcomed 18.72 million international overnight visitors in 2024, up 9% on 2023 (Dubai DET). High demand and global exposure.</p>
+              <a href="https://www.instagram.com/p/DTbA9PvEzFd/" target="_blank" rel="noopener" class="ig-link">View on Instagram →</a>
+            </div>
+          </div>
+
+          <div class="ig-card reveal">
+            <a href="https://www.instagram.com/p/DTdkrG0Eopq/" target="_blank" rel="noopener" aria-label="View post on Instagram">
+              <div class="ig-thumb">
+                <div class="ig-thumb-placeholder" aria-hidden="true">◈</div>
+              </div>
+            </a>
+            <div class="ig-body">
+              <span class="pill pill-sm">History · Dubai</span>
+              <p>The Burj Khalifa wasn’t always called that. Built from 2004 as "Burj Dubai", it was renamed at its opening in 2010. Today, at 828 metres, it is a symbol of vision and resilience.</p>
+              <a href="https://www.instagram.com/p/DTdkrG0Eopq/" target="_blank" rel="noopener" class="ig-link">View on Instagram →</a>
+            </div>
+          </div>
+
+          <div class="ig-card reveal">
+            <a href="https://www.instagram.com/p/DOhKVcXE5Ia/" target="_blank" rel="noopener" aria-label="View post on Instagram">
+              <div class="ig-thumb">
+                <div class="ig-thumb-placeholder" aria-hidden="true">◈</div>
+              </div>
+            </a>
+            <div class="ig-body">
+              <span class="pill pill-sm">Introduction</span>
+              <p>Real Estate Advisor in Dubai. Analysis-based investment strategies. Service in Spanish, English and Portuguese.</p>
+              <a href="https://www.instagram.com/p/DOhKVcXE5Ia/" target="_blank" rel="noopener" class="ig-link">View on Instagram →</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="ig-cta reveal">
+          <a href="https://instagram.com/stephanydianderasrealestates" target="_blank" rel="noopener" class="btn btn-outline-copper">
+            See all posts →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- POR QUÉ UAE -->
+    <section class="mercado" id="mercado" aria-label="Why invest in the UAE">
+      <div class="container">
+        <div class="mercado-header reveal">
+          <div class="section-eyebrow">▸ El mercado</div>
+          <h2 class="section-title">Why the UAE is still<br /><em>one of the best markets</em><br />in the world to invest in</h2>
+        </div>
+        <div class="mercado-grid">
+          <div class="mcard reveal">
+            <span class="mcard-icon" aria-hidden="true">◈</span>
+            <h3>0% income tax</h3>
+            <p>Rental income and capital gains on sales are not taxed for individuals. A structural tax advantage few markets can match.</p>
+          </div>
+          <div class="mcard reveal">
+            <span class="mcard-icon" aria-hidden="true">◈</span>
+            <h3>Reference gross yields</h3>
+            <p>2025 averages in Dubai: around 7% gross for apartments and 5% for villas (Cavendish Maxwell). Net yield depends on the area and costs.</p>
+          </div>
+          <div class="mcard reveal">
+            <span class="mcard-icon" aria-hidden="true">◈</span>
+            <h3>Residency linked to property</h3>
+            <p>Buying property can give access to residence visas, including the 10-year Golden Visa. Requirements have changed recently: confirm them with the Dubai Land Department before investing.</p>
+          </div>
+          <div class="mcard reveal">
+            <span class="mcard-icon" aria-hidden="true">◈</span>
+            <h3>A regulated, transparent market</h3>
+            <p>The Dubai Land Department (DLD) offers open data on real estate transactions. Historical prices and volume can be checked against official data.</p>
+          </div>
+          <div class="mcard reveal">
+            <span class="mcard-icon" aria-hidden="true">◈</span>
+            <h3>Sustained international demand</h3>
+            <p>Dubai welcomed 18.72 million international visitors in 2024 (Dubai DET). Rental demand remains backed by a growing expatriate base.</p>
+          </div>
+          <div class="mcard reveal">
+            <span class="mcard-icon" aria-hidden="true">◈</span>
+            <h3>Massive infrastructure projects</h3>
+            <p>From the Dubai Metro to the new districts of Ras Al Khaimah and Sharjah, public infrastructure investment keeps lifting emerging areas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section class="sobre-mi" id="sobre-mi" aria-label="About me">
+      <div class="container">
+        <div class="sobre-layout">
+          <div class="sobre-visual reveal">
+            <div class="avatar-wrap">
+              <img src="assets/avatar.jpeg" alt="Photo of Stephany Dianderas" loading="lazy" onerror="this.style.display='none'" />
+              <div class="avatar-fallback" aria-hidden="true">SD</div>
+            </div>
+            <div class="sobre-credenciales">
+              <div class="credencial">
+                <strong>Industrial engineer</strong>
+                <span>An analysis-first approach to every investment</span>
+              </div>
+              <div class="credencial">
+                <strong>4+ years</strong>
+                <span>of experience in real estate</span>
+              </div>
+              <div class="credencial">
+                <strong>ESP · ENG · POR</strong>
+                <span>Service in three languages</span>
+              </div>
+            </div>
+          </div>
+          <div class="sobre-text reveal">
+            <div class="section-eyebrow">▸ Who is behind the channel</div>
+            <h2>I’m Stephany Dianderas, with<br /><em>more than 4 years</em> of experience<br />in real estate</h2>
+            <p>I started this channel because I saw Hispanic investors arriving in Dubai with incomplete or simply wrong information. Portals show list prices, not real closing prices. Influencers show renders, not contracts.</p>
+            <p>I work with UAE developers and design analysis-based investment strategies. If you want personalised advice on a specific deal, you can contact me directly.</p>
+            <div class="sobre-acciones">
+              <a href="https://www.youtube.com/@stephanydianderas9001" target="_blank" rel="noopener" class="btn btn-copper">▶ Watch the channel</a>
+              <a href="https://wa.me/971586990835" target="_blank" rel="noopener" class="btn btn-outline-copper">◎ Talk on WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CONTACTO -->
+    <section class="contacto" id="contacto" aria-label="Contact">
+      <div class="container">
+        <div class="contacto-card reveal">
+          <div class="contacto-bg" aria-hidden="true"></div>
+          <div class="contacto-content">
+            <div class="section-eyebrow light">▸ Three ways to follow</div>
+            <h2>Choose how you want<br /><em>to take the next step</em></h2>
+            <div class="contacto-opciones">
+              <div class="copcion">
+                <span class="copcion-num" aria-hidden="true">01</span>
+                <h3>Subscribe to the channel</h3>
+                <p>Videos about the UAE market. Free, no strings attached.</p>
+                <a href="https://www.youtube.com/@stephanydianderas9001" target="_blank" rel="noopener" class="btn btn-copper">▶ Go to YouTube</a>
+              </div>
+              <div class="copcion-sep" aria-hidden="true"></div>
+              <div class="copcion">
+                <span class="copcion-num" aria-hidden="true">02</span>
+                <h3>Message me on WhatsApp</h3>
+                <p>If you have a deal in mind or want personalised advice on the UAE.</p>
+                <a href="https://wa.me/971586990835" target="_blank" rel="noopener" class="btn btn-outline-copper">◎ Open WhatsApp</a>
+              </div>
+              <div class="copcion-sep" aria-hidden="true"></div>
+              <div class="copcion">
+                <span class="copcion-num" aria-hidden="true">03</span>
+                <h3>Follow me on Instagram</h3>
+                <p>Market updates, quick facts and daily context from the sector.</p>
+                <a href="https://instagram.com/stephanydianderasrealestates" target="_blank" rel="noopener" class="btn btn-outline-copper">◎ View Instagram</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" aria-label="Footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#inicio" class="nav-logo" aria-label="Home">
+            <span class="logo-emblem" aria-hidden="true">◈</span>
+            <div class="logo-text-group">
+              <span class="logo-name">Stephany Dianderas</span>
+              <span class="logo-sub">Real Estate · UAE</span>
+            </div>
+          </a>
+          <p>UAE real estate market analysis for investors and buyers who want to decide with real information.</p>
+          <div class="footer-social">
+            <a href="https://www.youtube.com/@stephanydianderas9001" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+            <a href="https://instagram.com/stephanydianderasrealestates" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+            <a href="https://wa.me/971586990835" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Content</h3>
+          <ul role="list">
+            <li><a href="#videos-yt">Videos</a></li>
+            <li><a href="#instagram">Instagram</a></li>
+            <li><a href="#mercado">Why the UAE</a></li>
+            <li><a href="#sobre-mi">About me</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <ul role="list">
+            <li><a href="https://wa.me/971586990835" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:stephanydianderas12@gmail.com">stephanydianderas12@gmail.com</a></li>
+            <li><a href="https://instagram.com/stephanydianderasrealestates" target="_blank" rel="noopener">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="footerYear"></span> Stephany Dianderas. All rights reserved.</p>
+        <p class="footer-disclaimer">This channel is for information purposes. It does not constitute formal financial or real estate advice.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/interactions.js" defer></script>
+</body>
+</html>
