@@ -1,0 +1,172 @@
+/* reset.css — variables globales, reset y base */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* ── Paleta REUAE negro y cobre · REUAE-B1 v0.6 §8 · aprobada por la usuaria 2026-11-04 ── */
+  --brand-ink:         #0B0F14;
+  --brand-graphite:    #1A222C;
+  --brand-bone:        #F4EFE6;
+  --brand-copper:      #E39A5E;
+  --brand-copper-deep: #9A4F1E;
+  --brand-steel:       #A9B5C2;
+
+  /* Derivados funcionales: mezclas de los tokens anteriores, no colores de marca nuevos */
+  --ink:          var(--brand-ink);
+  --ink-2:        #10151C;  /* Ink → Graphite 33 % */
+  --ink-3:        #151C24;  /* Ink → Graphite 66 % */
+  --surface:      var(--brand-graphite);
+  --surface-2:    #232B35;  /* Graphite → Steel 6 % */
+  --surface-hover:#2B343E;  /* Graphite → Steel 12 % */
+
+  --border:       rgba(227,154,94,0.12);
+  --border-mid:   rgba(227,154,94,0.22);
+  --border-strong:rgba(227,154,94,0.4);
+
+  --text:         var(--brand-bone);
+  --text-2:       var(--brand-steel);
+  --text-3:       #919CA8;  /* Steel → Ink: ≥ 4.5:1 sobre todas las superficies */
+  --text-inv:     var(--brand-ink);
+
+  --bone:         var(--brand-bone);
+  --copper:       var(--brand-copper);        /* acento sobre fondos oscuros; nunca sobre Bone */
+  --copper-soft:  #E8B487;                    /* Copper → Bone 30 %: énfasis y hover */
+  --copper-deep:  var(--brand-copper-deep);   /* acento solo sobre fondos Bone */
+  --copper-glow:    rgba(227,154,94,0.12);
+  --copper-glow-md: rgba(227,154,94,0.2);
+
+  --white:        #ffffff;
+
+  /* ── Tipografía ── */
+  --font-display: 'Fraunces', 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body:    'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-mono:    ui-monospace, 'SF Mono', 'Fira Code', monospace;
+
+  /* ── Escala tipográfica fluida ── */
+  --text-xs:   clamp(0.65rem, 1.1vw, 0.72rem);
+  --text-sm:   clamp(0.8rem,  1.4vw, 0.88rem);
+  --text-base: clamp(0.95rem, 1.7vw, 1rem);
+  --text-lg:   clamp(1.05rem, 2vw,   1.2rem);
+  --text-xl:   clamp(1.2rem,  2.5vw, 1.5rem);
+  --text-2xl:  clamp(1.6rem,  3.5vw, 2.2rem);
+  --text-3xl:  clamp(2.2rem,  5.5vw, 3.8rem);
+  --text-4xl:  clamp(3rem,    8vw,   6rem);
+
+  /* ── Espaciado ── */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.5rem;
+  --sp-6:  2rem;
+  --sp-8:  3rem;
+  --sp-10: 5rem;
+  --sp-12: 7rem;
+  --sp-16: 10rem;
+
+  /* ── Layout ── */
+  --max-w:    1200px;
+  --nav-h:    68px;
+
+  /* ── Forma ── */
+  --r-sm:  3px;
+  --r:     6px;
+  --r-lg:  12px;
+  --r-xl:  20px;
+
+  /* ── Sombras ── */
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.5);
+  --shadow:      0 6px 24px rgba(0,0,0,0.6);
+  --shadow-lg:   0 16px 48px rgba(0,0,0,0.7);
+  --shadow-copper: 0 0 40px var(--copper-glow-md);
+
+  /* ── Motion ── */
+  --ease-out:    cubic-bezier(0.2, 0.9, 0.3, 1);
+  --ease-snappy: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur:         0.3s;
+  --dur-slow:    0.65s;
+
+  /* ── Blur ── */
+  --blur-nav: blur(20px);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--ink);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: none;
+}
+
+@media (hover: none) {
+  body { cursor: auto; }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol { list-style: none; }
+
+button, input {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+  cursor: none;
+}
+
+@media (hover: none) {
+  button, input { cursor: auto; }
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+  color: var(--copper-soft);
+}
+
+strong { font-weight: 600; }
+
+iframe {
+  display: block;
+  border: 0;
+}
+
+::selection {
+  background: var(--copper);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 1px solid var(--copper);
+  outline-offset: 4px;
+  border-radius: var(--r-sm);
+}
